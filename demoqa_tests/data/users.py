@@ -8,7 +8,7 @@ class User:
     email: str
     gender: str
     mobile: str
-    day_of_birth: str
+    day_of_birth: list
     month_of_birth: str
     year_of_birth: str
     subjects: str
