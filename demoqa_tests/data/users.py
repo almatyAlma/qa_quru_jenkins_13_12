@@ -20,8 +20,8 @@ class User:
 
 
 student = User(
-    first_name='Test',
-    last_name='Testov',
+    first_name='Alma',
+    last_name='Bekbergenova',
     email='test@test.ru',
     gender='Male',
     phone_number='1234567890',
