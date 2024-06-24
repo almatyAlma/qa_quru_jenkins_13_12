@@ -1,27 +1,28 @@
+import allure
+
 from demoqa_tests.data import users
 from demoqa_tests.pages.registration_page import RegistrationPage
-import allure
-from allure_commons.types import Severity
 
-
-@allure.tag("web")
-@allure.description("Проверка страницы Demoqa practice form")
-@allure.severity(Severity.NORMAL)
-@allure.label("owner", "saritto")
-@allure.link("https://demoqa.com/automation-practice-form", name="Demoqa form")
-@allure.title("Проверка страницы Demoqa practice form")
-def test_demoqa_form():
+@allure.title("demoqa - test practice form")
+@allure.tag("Registration", 'QA.GURU')
+@allure.severity(allure.severity_level.NORMAL)
+@allure.label("owner", "Alma")
+@allure.parent_suite("demoqa")
+@allure.suite("Регистрация пользователя")
+@allure.sub_suite("Пользователь успешно регистрируется")
+def test_registration():
     registration_page = RegistrationPage()
-    admin = users.admin
-
-    with allure.step("Открываем главную страницу:"):
+    with allure.step('Открываем форму регистрации'):
         registration_page.open()
+    # WHEN
+    with allure.step('Регистрируем пользователя'):
+        registration_page.register(users.student)
 
-    with allure.step("Регистрируем пользователя:"):
-        registration_page.register(admin)
-
-    with allure.step("Отправляем заполненную форму:"):
-        registration_page.submit()
-
-    with allure.step("Открывается форма с зарегистрированными данными:"):
-        registration_page.should_have_registered(admin)
+    # THEN
+    with allure.step('Проверка данных пользователя'):
+        registration_page.assert_user_info(
+            'Alma Bekbergenova', 'test@test.ru', 'Male', '1234567890',
+            '02 January,1991', 'Maths, Chemistry', 'Sports, Reading, Music', 'orig.jpg',
+            'Test Address', 'NCR Delhi'
+        )
+        # registration_page.close_modal_window()

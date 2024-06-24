@@ -1,37 +1,34 @@
-import dataclasses
+from dataclasses import dataclass
 
 
-@dataclasses.dataclass
+@dataclass
 class User:
     first_name: str
     last_name: str
     email: str
     gender: str
-    mobile: str
-    day_of_birth: list
+    phone_number: str
+    day_of_birth: str
     month_of_birth: str
     year_of_birth: str
-    subjects: str
-    hobbies: str
-    photo: str
+    subjects: list
+    hobbies: list
+    picture: str
     current_address: str
     state: str
     city: str
 
 
-admin = User(
-    first_name='Alma',
-    last_name='Testovna',
-    email='test@gmail.com',
-    gender='Female',
-    mobile='7777777777',
-    day_of_birth='11',
-    month_of_birth='2',
-    year_of_birth='1991',
-    subjects='Computer Science',
-    hobbies='Reading',
-    photo='orig.jpg',
-    current_address='Current Address',
-    state='Rajasthan',
-    city='Jaipur'
+student = User(
+    first_name='Test',
+    last_name='Testov',
+    email='test@test.ru',
+    gender='Male',
+    phone_number='1234567890',
+    day_of_birth='02', month_of_birth='January', year_of_birth='1991',
+    subjects=['Maths', 'Chemistry'],
+    hobbies=['Sports', 'Reading', 'Music'],
+    picture='orig.jpg',
+    current_address='Test Address',
+    state='NCR', city='Delhi'
 )
